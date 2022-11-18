@@ -19,7 +19,7 @@ const DataTable = () => {
     });
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/api/get').then((response) => {
+        Axios.get('http://coolingtowersql-env.eba-tpdbwark.eu-west-2.elasticbeanstalk.com/api/get').then((response) => {
             setResultList(response.data)
         })
     }, [])

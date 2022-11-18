@@ -35,7 +35,7 @@ const NewRecord = () => {
     const [editMode, setEditMode] = useState(false);
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/api/get').then((response) => {
+        Axios.get('http://coolingtowersql-env.eba-tpdbwark.eu-west-2.elasticbeanstalk.com/api/get').then((response) => {
             setResultList(response.data)
         })
     }, [])
@@ -43,7 +43,7 @@ const NewRecord = () => {
     async function handleSubmitData() {
         console.log(resultList)
         setIsSubmitting(true)
-        await Axios.post('http://localhost:3001/api/insert', {
+        await Axios.post('http://coolingtowersql-env.eba-tpdbwark.eu-west-2.elasticbeanstalk.com/api/insert', {
             date: date,
             time: time,
             coolingTower: coolingTower,
@@ -88,7 +88,7 @@ const NewRecord = () => {
 
     async function handleEditData(id) {
         setIsSubmitting(true)
-        await Axios.put('http://localhost:3001/api/update', {
+        await Axios.put('http://coolingtowersql-env.eba-tpdbwark.eu-west-2.elasticbeanstalk.com/api/update', {
             pH: pH,
             labConductivity: labConductivity,
             freeHalogen: freeHalogen,
@@ -130,7 +130,7 @@ const NewRecord = () => {
     }
 
     async function handleDeleteData(id) {
-        Axios.delete(`http://localhost:3001/api/delete/${id}`).then((res) => {
+        Axios.delete(`http://coolingtowersql-env.eba-tpdbwark.eu-west-2.elasticbeanstalk.com/api/delete/${id}`).then((res) => {
             const del = resultList.filter(result => id !== result.id)
             setResultList(del)
         })
