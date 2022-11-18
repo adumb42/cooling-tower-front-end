@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
+import Modal from './Modal';
+import DataTable from './components/DataTable';
+import Navbar from './components/Navbar';
+import NewRecord from './components/NewRecord';
+import "./index.css";
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 
-function App() {
+const App = () => {
+  const [show, setShow] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <React.Fragment>
+              <Navbar />
+              <Outlet />
+            </React.Fragment>
+          }>
+            <Route index element={<DataTable />} />
+            <Route path="newrecord" element={<NewRecord />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+  )
 }
 
 export default App;
+
+    //button onClick={submitReview}>Submit</button>
+
+      //   {movieReviewList.map((val) => {
+      //     return (
+      //       <div className="card">
+      //         <h1>{val.movieName}</h1>
+      //         <p>{val.movieReview}</p>
+
+      //         <button onClick={() => {deleteReview(val.movieName)}}>Delete</button>
+      //         <input type="text" id="updateInput" onChange={(e) => setNewReview(e.target.value)}></input>
+      //         <button onClick={() => updateReview(val.movieName)}>Update</button>
+
+      //       </div>
+      //     )
+      //   })}
