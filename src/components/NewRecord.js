@@ -35,7 +35,7 @@ const NewRecord = () => {
     const [editMode, setEditMode] = useState(false);
 
     useEffect(() => {
-        Axios.get('https://cooling-tower-render-api.onrender.com/api/get').then((response) => {
+        Axios.get(`${process.env.REACT_APP_API_URL}/api/get`).then((response) => {
             setResultList(response.data)
         })
     }, [])
@@ -43,7 +43,7 @@ const NewRecord = () => {
     async function handleSubmitData() {
         console.log(resultList)
         setIsSubmitting(true)
-        await Axios.post('https://cooling-tower-render-api.onrender.com/api/insert', {
+        await Axios.post(`${process.env.REACT_APP_API_URL}/api/insert`, {
             date: date,
             time: time,
             coolingTower: coolingTower,
@@ -88,7 +88,7 @@ const NewRecord = () => {
 
     async function handleEditData(id) {
         setIsSubmitting(true)
-        await Axios.put('https://cooling-tower-render-api.onrender.com/api/update', {
+        await Axios.put(`${process.env.REACT_APP_API_URL}/api/update`, {
             pH: pH,
             labConductivity: labConductivity,
             freeHalogen: freeHalogen,
@@ -130,7 +130,7 @@ const NewRecord = () => {
     }
 
     async function handleDeleteData(id) {
-        Axios.delete(`https://cooling-tower-render-api.onrender.com/api/delete/${id}`).then((res) => {
+        Axios.delete(`${process.env.REACT_APP_API_URL}/api/delete/${id}`).then((res) => {
             const del = resultList.filter(result => id !== result.id)
             setResultList(del)
         })
@@ -192,19 +192,6 @@ const NewRecord = () => {
         })
     }
 
-    // const deleteReview = (movie) => {
-    //     Axios.delete(`http://localhost:3001/api/delete/${movie}`)
-    // }
-
-    // const updateReview = (movie) => {
-    //     Axios.put("http://localhost:3001/api/update", {
-    //         movieName: movie,
-    //         movieReview: newReview
-    //     })
-    //     setNewReview("")
-    // }
-
-    
     return(
         <div className="container">
             <table className="data-entry">

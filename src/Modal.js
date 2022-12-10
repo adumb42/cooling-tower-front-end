@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import "./styles/modal.css"
-import Axios from 'axios';
 
 const Modal = props => {
     return ReactDOM.createPortal(

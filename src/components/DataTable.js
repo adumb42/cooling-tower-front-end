@@ -19,7 +19,7 @@ const DataTable = () => {
     });
 
     useEffect(() => {
-        Axios.get('https://cooling-tower-render-api.onrender.com/api/get').then((response) => {
+        Axios.get(`${process.env.REACT_APP_API_URL}/api/get`).then((response) => {
             setResultList(response.data)
         })
     }, [])
@@ -150,7 +150,6 @@ const DataTable = () => {
                 <p>{currentComment}</p>
             </Modal>
         </div>
-        
     )
 }
 

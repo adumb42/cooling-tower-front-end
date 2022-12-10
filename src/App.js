@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
-import Modal from './Modal';
 import DataTable from './components/DataTable';
 import Navbar from './components/Navbar';
 import NewRecord from './components/NewRecord';
@@ -9,8 +8,6 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
 const App = () => {
-  const [show, setShow] = useState(false);
-
   return (
       <BrowserRouter>
         <Routes>
